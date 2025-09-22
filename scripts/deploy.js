@@ -1,6 +1,11 @@
 const fs = require('fs');
 
 async function main() {
+    const [deployer] = await ethers.getSigners();
+    
+    console.log("Deploying contracts with the account:", deployer.address);
+    console.log("Account balance:", (await deployer.provider.getBalance(deployer.address)).toString());
+
     const FileVerification = await ethers.getContractFactory("FileVerification");
     
     console.log("Deploying FileVerification...");
@@ -11,6 +16,7 @@ async function main() {
     
     console.log("FileVerification deployed to:", fileVerification.target);
 
+    // Create .env file with contract address and private key
     const envPath = '.env';
     let envContent = '';
 
@@ -18,22 +24,36 @@ async function main() {
         envContent = fs.readFileSync(envPath, 'utf8');
     }
 
-    const lines = envContent.split('\n');
-    let found = false;
+    const lines = envContent.split('\n').filter(line => line.trim() !== '');
+    
+    // Update or add CONTRACT_ADDRESS
+    let addressFound = false;
+    let keyFound = false;
+    
     for (let i = 0; i < lines.length; i++) {
         if (lines[i].startsWith('CONTRACT_ADDRESS=')) {
             lines[i] = `CONTRACT_ADDRESS=${fileVerification.target}`;
-            found = true;
-            break;
+            addressFound = true;
+        } else if (lines[i].startsWith('PRIVATE_KEY=')) {
+            keyFound = true;
         }
     }
 
-    if (!found) {
+    if (!addressFound) {
         lines.push(`CONTRACT_ADDRESS=${fileVerification.target}`);
     }
+    
+    if (!keyFound) {
+        // Use the first account's private key for local development
+        // In production, this should be set manually for security
+        lines.push(`PRIVATE_KEY=0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80`);
+        console.log('⚠️  Using default private key for local development');
+        console.log('⚠️  For production, please set your own PRIVATE_KEY in .env file');
+    }
 
-    fs.writeFileSync(envPath, lines.join('\n'));
-    console.log('Contract address saved to .env');
+    fs.writeFileSync(envPath, lines.join('\n') + '\n');
+    console.log('✅ Contract address and configuration saved to .env');
+    console.log('📄 Contract deployed successfully!');
 }
 
 main()
